@@ -18,7 +18,7 @@ jobs:
       - name: Prepare
         run: |
           sudo apt-get update
-          sudo apt-get install gcc-mipsel-linux-gnu
+          sudo apt-get install gcc-arm-linux-gnueabi gcc-mipsel-linux-gnu
 
       - name: u-boot-ingenic
         run: |
@@ -27,9 +27,19 @@ jobs:
           cp -f ../scripts/u-boot-ingenic.sh build.sh
           bash build.sh
 
+      - name: u-boot-hi3516ev200
+        run: |
+          git clone https://github.com/cronyx/u-boot-hi3516ev200.git --depth=1
+          cd u-boot-hi3516ev200
+          cp -f ../scripts/u-boot-hi3516ev200.sh build.sh
+          bash build.sh
+
       - name: Upload
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{env.TAG_NAME}}
           files: |
             u-boot-ingenic/output/u-boot-t31lc-universal.bin
+            u-boot-hi3516ev200/output/u-boot-hi3516ev200-universal.bin
+            u-boot-hi3516ev200/output/u-boot-hi3516ev300-universal.bin
+
