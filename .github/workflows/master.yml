@@ -18,14 +18,7 @@ jobs:
       - name: Prepare
         run: |
           sudo apt-get update
-          sudo apt-get install gcc-arm-linux-gnueabi gcc-mipsel-linux-gnu
-
-      - name: u-boot-ingenic
-        run: |
-          git clone https://github.com/cronyx/u-boot-ingenic.git --depth=1
-          cd u-boot-ingenic
-          cp -f ../scripts/u-boot-ingenic.sh build.sh
-          bash build.sh
+          sudo apt-get install gcc-arm-linux-gnueabi
 
       - name: u-boot-hi3516ev200
         run: |
@@ -39,7 +32,7 @@ jobs:
         with:
           tag_name: ${{env.TAG_NAME}}
           files: |
-            u-boot-ingenic/output/u-boot-t31lc-universal.bin
             u-boot-hi3516ev200/output/u-boot-hi3516ev200-universal.bin
             u-boot-hi3516ev200/output/u-boot-hi3516ev300-universal.bin
+            u-boot-hi3516ev200/output/u-boot-hi3518ev300-universal.bin
 
