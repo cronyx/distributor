@@ -20,7 +20,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install gcc-mipsel-linux-gnu
 
-      - name: u-boot-ingenic
+      - name: u-boot-t41
         run: |
           git clone https://github.com/openipc/u-boot-t41.git --depth=1
           cd u-boot-t41
