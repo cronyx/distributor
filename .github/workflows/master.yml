@@ -24,7 +24,7 @@ jobs:
         run: |
           git clone https://github.com/openipc/u-boot-t41.git --depth=1
           cd u-boot-ingenic
-          cp -f ../scripts/u-boot-ingenic.sh build.sh
+          cp -f ../scripts/u-boot-ingenic-t41.sh build.sh
           bash build.sh
 
       - name: Upload
@@ -39,5 +39,3 @@ jobs:
             u-boot-ingenic/output/u-boot-t41nq-universal.bin
             u-boot-ingenic/output/u-boot-t41zx-universal.bin
             u-boot-ingenic/output/u-boot-t41xq-universal.bin
-
-
