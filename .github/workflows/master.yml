@@ -18,13 +18,13 @@ jobs:
       - name: Prepare
         run: |
           sudo apt-get update
-          sudo apt-get install gcc-arm-linux-gnueabi
+          sudo apt-get install gcc-mipsel-linux-gnu
 
-      - name: u-boot-hi3516ev200
+      - name: u-boot-ingenic
         run: |
-          git clone https://github.com/cronyx/u-boot-hi3516ev200.git --depth=1
-          cd u-boot-hi3516ev200
-          cp -f ../scripts/u-boot-hi3516ev200.sh build.sh
+          git clone https://github.com/openipc/u-boot-t41.git --depth=1
+          cd u-boot-ingenic
+          cp -f ../scripts/u-boot-ingenic.sh build.sh
           bash build.sh
 
       - name: Upload
@@ -32,7 +32,12 @@ jobs:
         with:
           tag_name: ${{env.TAG_NAME}}
           files: |
-            u-boot-hi3516ev200/output/u-boot-hi3516ev200-universal.bin
-            u-boot-hi3516ev200/output/u-boot-hi3516ev300-universal.bin
-            u-boot-hi3516ev200/output/u-boot-hi3518ev300-universal.bin
+            u-boot-ingenic/output/u-boot-t41a-universal.bin
+            u-boot-ingenic/output/u-boot-t41l-universal.bin
+            u-boot-ingenic/output/u-boot-t41lq-universal.bin
+            u-boot-ingenic/output/u-boot-t41n-universal.bin
+            u-boot-ingenic/output/u-boot-t41nq-universal.bin
+            u-boot-ingenic/output/u-boot-t41zx-universal.bin
+            u-boot-ingenic/output/u-boot-t41xq-universal.bin
+
 
